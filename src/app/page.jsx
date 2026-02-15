@@ -3,9 +3,17 @@ import { FaReact } from "react-icons/fa";
 import { IoShieldCheckmarkSharp } from "react-icons/io5";
 import { SiMongodb } from "react-icons/si";
 import Link from "next/link";
-export default function Home() {
+import LoginButton from "@/components/LoginButton";
+import UserCard from "@/components/UserCard";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import AuthButtons from "@/components/AuthButtons";
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
     <div className="min-h-screen relative flex flex-col justify-center items-center gap-5 ">
+      <UserCard></UserCard>
       {/* icons */}
       <div className=" flex gap-5 space-x-4 items-center">
         <FaReact
@@ -16,18 +24,18 @@ export default function Home() {
         <RiNextjsLine size={50}></RiNextjsLine>
         <SiMongodb size={50} className="text-green-600"></SiMongodb>
       </div>
-
       {/* head  */}
       <div className="relative">
         <h2 className="text-5xl">NEXT AUTH</h2>
       </div>
-
       {/* buttons */}
-      <div className="flex gap-5">
-        <button className="btn">Login</button>
-        <Link href={"/register"} className="btn">
-          Register
-        </Link>
+      <AuthButtons></AuthButtons>
+      {/* use server */}
+      <div>
+        <h3 className="font-bold">use server</h3>
+        <p className="font-semibold border p-5 rounded">
+          {JSON.stringify(session)}
+        </p>
       </div>
     </div>
   );
