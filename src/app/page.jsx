@@ -11,6 +11,7 @@ import AuthButtons from "@/components/AuthButtons";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  
   return (
     <div className="min-h-screen relative flex flex-col justify-center items-center gap-5 ">
       <UserCard></UserCard>

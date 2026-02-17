@@ -19,9 +19,12 @@ export async function proxy(req) {
     return NextResponse.redirect(loginUrl);
   }
 
+  //admin route protection
   if (reqPath.startsWith("/admin") && token?.role !== "admin") {
     return NextResponse.redirect(new URL("/", req.url));
   }
+
+  //creator route protection
   if (reqPath.startsWith("/creator") && token?.role !== "creator") {
     return NextResponse.redirect(new URL("/", req.url));
   }
