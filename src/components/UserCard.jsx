@@ -16,6 +16,7 @@ const UserCard = () => {
           src={session?.data?.user?.image}
           alt={session?.data?.user?.name}
           className="h-64 w-64 rounded-full border border-gray-500"
+          referrerPolicy="no-referrer"
         />
         <h3 className="text-3xl font-black">{session?.data?.user?.name}</h3>
         <h4>{session?.data?.user?.email}</h4>

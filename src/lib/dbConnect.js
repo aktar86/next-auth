@@ -1,6 +1,5 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri = process.env.NEXTAUTH_URI;
-
 const dbname = process.env.NEXTAUTH_DB;
 
 const client = new MongoClient(uri, {
